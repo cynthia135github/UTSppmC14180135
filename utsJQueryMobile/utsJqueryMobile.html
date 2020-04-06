@@ -9,6 +9,39 @@
 	  
 	  <script language = "javascript">
 	  
+		var jumlahpinjam = parseInt($("#jumpinjam").val());
+		var lama = parseInt($("#lamapinjam").val());
+		var listpinjam = [];
+		var hsl = 0;
+		var bunga = 0;
+		
+		function simpan()
+		{
+		
+			//alert(jumlahpinjam+"-"+lama);
+			if(lama >=1 && lama <=6)
+			{
+				bunga = (2/100)*jumlahpinjam*lama;
+				hsl = jumlahpinjam+bunga;
+			}
+			else if(lama >=7 && lama <=12)
+			{
+				bunga = (1.5/100)*jumlahpinjam*lama;
+				hsl = jumlahpinjam+bunga;
+			}
+			else if(lama >12)
+			{
+				bunga = (1/100)*jumlahpinjam*lama;
+				
+				hsl = jumlahpinjam+bunga;
+			}
+
+			
+			$("#msg").html("Total Pinjaman: " + hsl);
+		
+		}
+		
+		
 	  
 	  </script>
 	  
@@ -18,13 +51,28 @@
 		  <div data-role="header">
 			 <h1>Input Pinjaman</h1>
 		  </div>
+		  
 		  <div data-role="main" class="ui-content">
 			 <p>Click Here untuk melihat list cicilan</p>
 			 <a href="#page2">Go to Page List cicilan</a>
 			 <div id="Bagian1" style="width: 700px; height:400px; padding-top: 40px;">
-			 
+				<label for="basic">Jumlah Pinjaman:</label>
+				<input type="text" name="bsc" id="jumpinjam">
+				
+				<br>
+				
+				<label for="basic">Lama Waktu Pinjaman:</label>
+				<input type="text" name="basic" id="lamapinjam">
+				
+				<br>
+				<input type = "button"  value="Simpan" onclick="simpan()">
+
+				<div data-role="popup" id="msg">
+				  
+				</div>
+				
 			 </div>
-		   </div>
+		  </div>
          <div data-role="footer">
             <h1>Cynthia Wijaya / C14180135</h1>
          </div>
@@ -34,16 +82,25 @@
 		  <div data-role="header">
 			 <h1>List Cicilan dan Detail Informasi</h1>
 		  </div>
+		  
 		  <div data-role="main" class="ui-content">
 			 <p>Back to Page Inputan Cicilan</p>
 			 <a href="#page1">Go to Page Input Cicilan</a>
-			 <div id="Bagian1" style="width: 700px; height:400px; padding-top: 40px;">
-
-			 </div>
+			 <br>
+			 <br><br>
+			 
+			 <ul data-role="listview">
+			  <li><a href="acura.html">Acura</a></li>
+			  <li><a href="audi.html">Audi</a></li>
+			  <li><a href="bmw.html">BMW</a></li>
+			</ul>
+			 
 		   </div>
+		   
          <div data-role="footer">
             <h1>Cynthia Wijaya / C14180135</h1>
          </div>
+		 
       </div>
 	  
 	</body>
