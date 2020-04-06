@@ -9,14 +9,16 @@
 	  
 	  <script language = "javascript">
 	  
-		var jumlahpinjam = parseInt($("#jumpinjam").val());
-		var lama = parseInt($("#lamapinjam").val());
 		var listpinjam = [];
 		var hsl = 0;
-		var bunga = 0;
-		
+		var j = 0;
 		function simpan()
 		{
+		
+			var jumlahpinjam = parseFloat($("#jumpinjam").val());
+			var lama = parseFloat($("#lamapinjam").val());
+		
+			var bunga = 0;
 		
 			//alert(jumlahpinjam+"-"+lama);
 			if(lama >=1 && lama <=6)
@@ -35,15 +37,50 @@
 				
 				hsl = jumlahpinjam+bunga;
 			}
-
+			var kalimat = "Cicilan "+(j+1)+": "+hsl
+			listpinjam.push(kalimat); 
+			j++;
+			alert(listpinjam);
 			
-			$("#msg").html("Total Pinjaman: " + hsl);
+			$("#box").html("Total Cicilan Yang harus di Bayar: "+ hsl);
+			
+			
+			 <!-- $( "#bsimpan" ).bind( "tap", tapHandler ); -->
+		 
+			  <!-- function tapHandler( event ){ -->
+				<!-- $( "#box" ).show("fold",1000); -->
+			  <!-- } -->
+		   
+			<!-- //$("#msg").html("Total Pinjaman: " + hsl); -->
 		
 		}
 		
-		
+	  
+	  $(function(){
+		  $( "#box2" ).bind( "tap", tapHandler );
+		 
+		  function tapHandler( event ){
+			$( "#box2").hide();
+			$( "#lv" ).show("fold",1000);
+			for(var a=0; a<j; a++)
+			{
+				$("#lv").append("<li>"+listpinjam[a]+"</li>");
+			}
+			
+		  }
+		});
 	  
 	  </script>
+	  
+	  <style>
+		
+		<!-- .tap{ -->
+			
+			<!-- background-color:red; -->
+			<!-- width:500px; -->
+		<!-- } -->
+	  
+	  </style>
 	  
 	 </head>
    <body>
@@ -53,7 +90,11 @@
 		  </div>
 		  
 		  <div data-role="main" class="ui-content">
-			 <p>Click Here untuk melihat list cicilan</p>
+			
+			<div id="box" style="background-color:yellow;">
+				
+			</div>
+			   <p>Click Link untuk melihat list cicilan</p>
 			 <a href="#page2">Go to Page List cicilan</a>
 			 <div id="Bagian1" style="width: 700px; height:400px; padding-top: 40px;">
 				<label for="basic">Jumlah Pinjaman:</label>
@@ -89,10 +130,12 @@
 			 <br>
 			 <br><br>
 			 
-			 <ul data-role="listview">
-			  <li><a href="acura.html">Acura</a></li>
-			  <li><a href="audi.html">Audi</a></li>
-			  <li><a href="bmw.html">BMW</a></li>
+			<div id="box2" style="background-color:yellow;">
+				Click Me to See the List !
+				<br>
+			</div>
+			 
+			<ul data-role="listview" id="lv">
 			</ul>
 			 
 		   </div>
